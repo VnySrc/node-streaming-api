@@ -1,2 +1,2 @@
 # node-streaming-api
-api de straming de videos
+projeto em react que consome uma api de straming de videos
