@@ -79,7 +79,7 @@ export const VideoPage = () => {
                     if (video.video_tag !== tag.tag) {
                         return (
                             <C.itemList key={video.id}>
-                                <C.itemImg> <a href={`http://127.0.0.1:3000/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></a></C.itemImg>
+                                <C.itemImg> <a href={`https://splendid-hummingbird-58de13.netlify.app/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></a></C.itemImg>
                                 <C.itemInfo>
                                     <span>{video.video_name}</span><br />
                                     <C.itemStatus><span>{video.author_channel_name}</span></C.itemStatus>
