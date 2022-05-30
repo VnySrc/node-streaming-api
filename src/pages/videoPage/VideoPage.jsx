@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link , useParams } from "react-router-dom";
 import { Header } from "../../components/Header"
 import * as C from "./styled"
 import { db } from "../../helpers/database";
@@ -79,7 +79,7 @@ export const VideoPage = () => {
                     if (video.video_tag !== tag.tag) {
                         return (
                             <C.itemList key={video.id}>
-                                <C.itemImg> <a href={`https://splendid-hummingbird-58de13.netlify.app/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></a></C.itemImg>
+                                <C.itemImg onClick={() => {window.location.reload()}}><Link to={`/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></Link></C.itemImg>
                                 <C.itemInfo>
                                     <span>{video.video_name}</span><br />
                                     <C.itemStatus><span>{video.author_channel_name}</span></C.itemStatus>
