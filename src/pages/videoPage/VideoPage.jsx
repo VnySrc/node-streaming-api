@@ -18,6 +18,7 @@ export const VideoPage = () => {
     const randomNumberData = () => {
         return Math.floor(Math.random() * 10)
     }
+   
 
     return (
         <>
@@ -25,9 +26,15 @@ export const VideoPage = () => {
             <C.mainGrid>
                 <C.videoContainerGrid>
                     <C.videoContainer>
-                        <video width=" 850px" height="486px" controls autoPlay="on">
-                            <source src={`http://node-streaming-api.herokuapp.com/videos/${tag.tag}`} type="video/mp4"></source>
-                        </video>
+                        {db.map((video) => {
+                            if (video.video_tag == tag.tag) {
+                                return (
+                                    <video width=" 850px" height="486px" controls autoPlay="on">
+                                    <source src={`http://node-streaming-api.herokuapp.com/videos/${tag.tag}`} type="video/mp4"></source>
+                                    </video>
+                                )
+                            }
+                        })}
                         {db.map(video => {
                             if (video.video_tag == tag.tag) {
                                 videoInfo.channel_img = video.author_channel_img_url
@@ -79,7 +86,7 @@ export const VideoPage = () => {
                     if (video.video_tag !== tag.tag) {
                         return (
                             <C.itemList key={video.id}>
-                                <C.itemImg onClick={() => {window.location.reload()}}><Link to={`/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></Link></C.itemImg>
+                                <C.itemImg><Link to={`/videos/${video.video_tag}`}><img src={video.thumbnail_url} alt="Video image thumbnail" /></Link></C.itemImg>
                                 <C.itemInfo>
                                     <span>{video.video_name}</span><br />
                                     <C.itemStatus><span>{video.author_channel_name}</span></C.itemStatus>
